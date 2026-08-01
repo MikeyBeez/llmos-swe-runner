@@ -162,11 +162,37 @@ for iid in [i for i in ids if i not in done]:
                 _pdir = os.path.join(LDIR, "patches")
                 os.makedirs(_pdir, exist_ok=True)
                 _wt = os.path.join(SWE, "work", iid)
-                # tests excluded: the referee applies the graded test patch
-                # itself, so including them here would double-apply.
-                _d = subprocess.run("git diff -- . ':(exclude)tests'",
-                                    shell=True, cwd=_wt, capture_output=True,
-                                    text=True, timeout=120).stdout or ""
+                # score() writes the model's patch to traces_v2/<id>.patch
+                # BEFORE it applies the graded test patch to the tree. That
+                # file is the artifact we want, by construction.
+                #
+                # Do NOT rebuild it from the work tree here. score() leaves
+                # the test patch applied, so a diff taken now contains it --
+                # and the old guard, ':(exclude)tests', only excludes a
+                # TOP-LEVEL tests/ directory. Django's tests are top-level so
+                # it looked right; astropy's are at astropy/io/ascii/tests/
+                # and sailed straight through. Measured 2026-08-01: the
+                # astropy-14365 archive came out 2156 bytes carrying the
+                # official test helper `lowercase_header`, against 926 bytes
+                # for the real patch.
+                _d = ""
+                _tp = os.path.join(SWE, "traces_v2", iid + ".patch")
+                try:
+                    with open(_tp) as _fh:
+                        _d = _fh.read()
+                except OSError:
+                    pass
+                if not _d.strip():
+                    # fallback only. glob pathspecs so nested test dirs are
+                    # actually excluded this time.
+                    _d = subprocess.run(
+                        "git diff -- . ':(exclude,glob)**/tests/**' "
+                        "':(exclude,glob)**/test/**' "
+                        "':(exclude,glob)**/test_*.py' "
+                        "':(exclude,glob)**/*_test.py' "
+                        "':(exclude,glob)**/tests.py'",
+                        shell=True, cwd=_wt, capture_output=True,
+                        text=True, timeout=120).stdout or ""
                 _stem = os.path.join(_pdir, "%s.attempt%d" % (iid, k + 1))
                 with open(_stem + ".patch", "w") as _fh:
                     _fh.write(_d)
