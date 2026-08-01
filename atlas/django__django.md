@@ -1,0 +1,49 @@
+CODE ATLAS for django/django — where past issues were actually fixed
+(from this system's own resolved runs; treat as evidence, verify by reading — past fixes suggest, they do not decide)
+
+- RenameModel with db_table should be a noop.
+    -> django/db/migrations/operations/models.py
+- Allow returning IDs in QuerySet.bulk_create() when updating conflicts.
+    -> django/db/models/query.py, django/db/models/sql/compiler.py
+- Class methods from nested classes cannot be used as Field.default.
+    -> django/db/migrations/serializer.py
+- Remove "for = ..." from MultiWidget's <label>.
+    -> django/forms/widgets.py
+- Allow FilePathField path to accept a callable.
+    -> django/db/models/fields/__init__.py
+- UsernameValidator allows trailing newline in usernames
+    -> django/contrib/auth/validators.py
+- Wrong hint about recursive relationship.
+    -> django/db/models/fields/related.py
+- Add support for item_comments to syndication framework
+    -> django/contrib/syndication/views.py
+- Messages framework incorrectly serializes/deserializes extra_tags when it's an empty string
+    -> django/contrib/messages/storage/cookie.py
+- Fix handling empty string for If-Modified-Since header
+    -> django/views/static.py
+- check_for_template_tags_with_the_same_name with libraries in TEMPLATES
+    -> django/core/checks/templates.py
+- QuerySet.only() after select_related() crash on proxy models.
+    -> django/db/models/query.py, django/db/models/sql/query.py
+- dbshell additional parameters should be passed before dbname on PostgreSQL.
+    -> django/db/backends/postgresql/client.py
+- Rendering empty_form crashes when empty_permitted is passed to form_kwargs
+    -> django/forms/formsets.py
+- Migration optimizer does not reduce multiple AlterField
+    -> django/db/migrations/operations/fields.py
+- Fix numberformat.py "string index out of range" when null
+    -> django/utils/numberformat.py
+- Sitemaps without items raise ValueError on callable lastmod.
+    -> django/contrib/sitemaps/__init__.py
+- "show_save_as_new" in admin can add without this permission
+    -> django/contrib/admin/templatetags/admin_modify.py
+- Template filter `join` should not escape the joining string if `autoescape` is `off`
+    -> django/template/defaultfilters.py
+- QuerySet.only() doesn't work with select_related() on a reverse OneToOneField relation.
+    -> django/db/models/sql/compiler.py
+- "default.html" deprecation warning raised for ManagementForm's
+    -> django/forms/utils.py
+- Accessing UserAdmin via to_field leads to link to PasswordResetForm being broken (404)
+    -> django/contrib/auth/forms.py
+- FileBasedCache has_key is susceptible to race conditions
+    -> django/core/cache/backends/filebased.py

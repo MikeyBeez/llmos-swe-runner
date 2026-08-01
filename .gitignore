@@ -1,0 +1,25 @@
+# /home/bard/swe is a WORKING directory, not a source tree: 45G of repo
+# checkouts live in work/ and 3.9G of clones in mirrors/. So the default is
+# to exclude EVERYTHING at the top level and re-admit only what is source.
+# A blacklist would silently start tracking the next big directory somebody
+# creates; this cannot.
+/*
+
+!/.gitignore
+!/*.py
+!/*.sh
+!/*.md
+
+# accumulated knowledge, small and irreplaceable: which file each instance
+# turned out to live in, and the audit notes
+!/atlas/
+!/audits/
+
+# the overnight chain scripts, but none of its logs
+!/overnight/
+/overnight/*
+!/overnight/*.sh
+!/overnight/*.py
+
+*.pyc
+__pycache__/
