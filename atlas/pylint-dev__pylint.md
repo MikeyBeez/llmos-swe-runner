@@ -5,7 +5,7 @@ CODE ATLAS for pylint-dev/pylint — where past issues were actually fixed
     -> pylint/lint/expand_modules.py
 - "--notes" option ignores note tags that are entirely punctuation
     -> pylint/checkers/misc.py, pylint/lint/run.py
-- Using custom braces in message template does not work
-    -> pylint/reporters/text.py
 - `--recursive=y` ignores `ignore-paths`
     -> pylint/lint/pylinter.py
+- Using custom braces in message template does not work
+    -> pylint/lint/run.py, pylint/reporters/text.py

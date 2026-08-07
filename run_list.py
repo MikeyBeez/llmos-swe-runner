@@ -219,6 +219,32 @@ for iid in [i for i in ids if i not in done]:
                             pass
             except Exception as _e:
                 r["patch_saved"] = "error: %s" % _e
+        # CONTAINER APPEAL (Mikey, 2026-08-02): our env graded GOLD itself as
+        # a failure on xarray-5131. Any in-env failure gets re-judged in the
+        # OFFICIAL swebench image; referee.py refuses to mean anything unless
+        # base fails and gold passes there first. If the container says the
+        # archived patch resolves, the in-env verdict was environmental and
+        # the attempt is recorded as resolved (resolved_by=container).
+        # Mikey, precisely: appeal ONLY a patch we had reason to BELIEVE --
+        # its own reproduction went green, or the fix tests passed and only
+        # the regression leg failed. A patch nobody believed just failed.
+        _believed = bool(r.get("repro_green")) or "F2P passed" in (r.get("score_tail") or "")
+        if not r.get("resolved") and _believed and os.environ.get("CONTAINER_APPEAL", "0") == "1":
+            try:
+                _rc = subprocess.run(
+                    ["python3", "referee.py", iid],
+                    cwd=SWE, capture_output=True, text=True, timeout=2400)
+                _out = (_rc.stdout or "") + (_rc.stderr or "")
+                _tag = "attempt%d" % (k + 1)
+                _line = next((l for l in _out.splitlines()
+                              if _tag in l and ("PASS" in l or "RESOLVED" in l)), "")
+                print(" -- container appeal: %s" % (_line or _out.strip().splitlines()[-1][:120] if _out.strip() else "no output"), flush=True)
+                if _line:
+                    r["resolved"] = True
+                    r["resolved_by"] = "container"
+                    r["score_tail"] = "in-env FAIL overturned by official container"
+            except Exception as _e:
+                print(" -- container appeal error: %s" % type(_e).__name__, flush=True)
         attempts.append(r)
         if r.get("resolved"):
             break

@@ -9,7 +9,7 @@ CODE ATLAS for pytest-dev/pytest — where past issues were actually fixed
     -> src/_pytest/nodes.py, src/_pytest/skipping.py
 - Improve default logging format
     -> src/_pytest/logging.py
-- Rewrite fails when first expression of file is a number and mistaken as docstring 
-    -> src/_pytest/assertion/rewrite.py
 - Module imported twice under import-mode=importlib
     -> src/_pytest/pathlib.py
+- Rewrite fails when first expression of file is a number and mistaken as docstring 
+    -> src/_pytest/assertion/rewrite.py

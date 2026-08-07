@@ -3,10 +3,6 @@ CODE ATLAS for django/django — where past issues were actually fixed
 
 - RenameModel with db_table should be a noop.
     -> django/db/migrations/operations/models.py
-- Allow returning IDs in QuerySet.bulk_create() when updating conflicts.
-    -> django/db/models/query.py, django/db/models/sql/compiler.py
-- Class methods from nested classes cannot be used as Field.default.
-    -> django/db/migrations/serializer.py
 - Remove "for = ..." from MultiWidget's <label>.
     -> django/forms/widgets.py
 - Allow FilePathField path to accept a callable.
@@ -19,8 +15,6 @@ CODE ATLAS for django/django — where past issues were actually fixed
     -> django/contrib/syndication/views.py
 - Messages framework incorrectly serializes/deserializes extra_tags when it's an empty string
     -> django/contrib/messages/storage/cookie.py
-- Fix handling empty string for If-Modified-Since header
-    -> django/views/static.py
 - check_for_template_tags_with_the_same_name with libraries in TEMPLATES
     -> django/core/checks/templates.py
 - QuerySet.only() after select_related() crash on proxy models.
@@ -33,8 +27,6 @@ CODE ATLAS for django/django — where past issues were actually fixed
     -> django/db/migrations/operations/fields.py
 - Fix numberformat.py "string index out of range" when null
     -> django/utils/numberformat.py
-- Sitemaps without items raise ValueError on callable lastmod.
-    -> django/contrib/sitemaps/__init__.py
 - "show_save_as_new" in admin can add without this permission
     -> django/contrib/admin/templatetags/admin_modify.py
 - Template filter `join` should not escape the joining string if `autoescape` is `off`
@@ -47,3 +39,107 @@ CODE ATLAS for django/django — where past issues were actually fixed
     -> django/contrib/auth/forms.py
 - FileBasedCache has_key is susceptible to race conditions
     -> django/core/cache/backends/filebased.py
+- Sitemaps without items raise ValueError on callable lastmod.
+    -> django/contrib/sitemaps/__init__.py
+- Fix handling empty string for If-Modified-Since header
+    -> django/views/static.py
+- Class methods from nested classes cannot be used as Field.default.
+    -> django/db/migrations/serializer.py
+- Allow returning IDs in QuerySet.bulk_create() when updating conflicts.
+    -> django/db/models/query.py
+- Set default FILE_UPLOAD_PERMISSION to 0o644.
+    -> django/conf/global_settings.py
+- sqlmigrate wraps it's outpout in BEGIN/COMMIT even if the database doesn't support transactional DDL
+    -> django/core/management/commands/sqlmigrate.py
+- Correct expected format in invalid DurationField error message
+    -> django/db/models/fields/__init__.py
+- HttpResponse doesn't handle memoryview objects
+    -> django/http/response.py
+- delete() on instances of models without any dependencies doesn't clear PKs.
+    -> django/db/models/deletion.py
+- Auto-reloading with StatReloader very intermittently throws "ValueError: embedded null byte".
+    -> django/utils/autoreload.py
+- Migrations uses value of enum object instead of its name.
+    -> django/db/migrations/serializer.py
+- Cannot override get_FOO_display() in Django 2.2+.
+    -> django/db/models/fields/__init__.py
+- makemigrations produces incorrect path for inner classes
+    -> django/db/migrations/serializer.py
+- Optional URL params crash some view functions.
+    -> django/urls/resolvers.py
+- Model.get_FOO_display() does not work correctly with inherited choices.
+    -> django/db/models/base.py
+- translation.E004 shouldn't be raised on sublanguages when a base language is available.
+    -> django/core/checks/translation.py
+- Settings are cleaned insufficiently.
+    -> django/views/debug.py
+- Migration crashes deleting an index_together if there is a unique_together on the same fields
+    -> django/db/backends/base/schema.py
+- QuerySet.Delete - inconsistent result when zero objects deleted
+    -> django/db/models/deletion.py
+- Add get_response_async for ASGIStaticFilesHandler
+    -> django/contrib/staticfiles/handlers.py
+- Make django.utils.text.slugify() strip dashes and underscores
+    -> django/utils/text.py
+- Queryset raises NotSupportedError when RHS has filterable=False attribute.
+    -> django/db/models/sql/query.py
+- Self referencing foreign key doesn't correctly order by a relation "_id" field.
+    -> django/db/models/sql/compiler.py
+- QuerySet.none() on combined queries returns all results.
+    -> django/db/models/sql/query.py
+- limit_choices_to on a ForeignKey can render duplicate options in formfield
+    -> django/forms/models.py
+- Added model class to app_list context
+    -> django/contrib/admin/sites.py
+- ManagementUtility instantiates CommandParser without passing already-computed prog argument
+    -> django/core/management/__init__.py
+- shell command crashes when passing (with -c) the python code with functions.
+    -> django/core/management/commands/shell.py
+- Use Admin Inline verbose_name as default for Inline verbose_name_plural
+    -> django/contrib/admin/options.py
+- Using __isnull=True on a KeyTransform should not match JSON null on SQLite and Oracle
+    -> django/db/models/fields/json.py
+- models.W042 is raised on inherited manually specified primary key.
+    -> django/db/models/base.py
+- ModelChoiceField does not provide value of invalid choice when raising ValidationError
+    -> django/forms/models.py
+- Saving parent object after setting on child leads to data loss for parents with non-numeric primary 
+    -> django/db/models/base.py
+- "TypeError: cannot pickle" when applying | operator to a Q object
+    -> django/utils/tree.py
+- Q(...) & Exists(...) raises a TypeError
+    -> django/db/models/query_utils.py
+- DEFAULT_AUTO_FIELD subclass check fails for subclasses of BigAutoField and SmallAutoField.
+    -> django/db/models/fields/__init__.py
+- django-admin startapp with trailing slash in directory name results in error
+    -> django/core/management/templates.py
+- Label for ReadOnlyPasswordHashWidget points to non-labelable element.
+    -> django/contrib/auth/forms.py
+- Add `nonform` CSS class for non form errors in FormSets
+    -> django/forms/formsets.py
+- Missing call `make_hashable` on `through_fields` in `ManyToManyRel`
+    -> django/db/models/fields/reverse_related.py
+- Refactor AutocompleteJsonView to support extra fields in autocomplete response
+    -> django/contrib/admin/views/autocomplete.py
+- method_decorator() should preserve wrapper assignments
+    -> django/utils/decorators.py
+- Wrong URL generated by get_admin_url for readonly field in custom Admin Site
+    -> django/contrib/admin/helpers.py
+- ModelChoiceIteratorValue is not hashable.
+    -> django/forms/models.py
+- Incorrect removal of order_by clause created as multiline RawSQL
+    -> django/db/models/sql/compiler.py
+- When DEBUG is True, raising Http404 in a path converter's to_python method does not result in a tech
+    -> django/urls/resolvers.py, django/views/debug.py
+- Prevent using __isnull lookup with non-boolean value.
+    -> django/db/models/lookups.py
+- django.utils.http.parse_http_date two digit year check is incorrect
+    -> django/utils/http.py
+- JSONField are not properly displayed in admin when they are readonly.
+    -> django/contrib/admin/utils.py
+- `TransactionTestCase.serialized_rollback` fails to restore objects due to ordering constraints
+    -> django/db/backends/base/creation.py
+- Inherited model doesn't correctly order by "-pk" when specified on Parent.Meta.ordering
+    -> django/db/models/sql/compiler.py
+- Add check for fields of UniqueConstraints.
+    -> django/db/models/base.py

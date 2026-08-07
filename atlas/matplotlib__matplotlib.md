@@ -15,9 +15,9 @@ CODE ATLAS for matplotlib/matplotlib — where past issues were actually fixed
     -> lib/matplotlib/backends/backend_ps.py
 - legend draggable as keyword
     -> lib/matplotlib/legend.py
-- xlim_changed not emitted on shared axis
-    -> lib/matplotlib/axis.py
 - [Bug]: ax.bar raises for all-nan data on matplotlib 3.6.1 
     -> lib/matplotlib/cbook/__init__.py
 - Error creating AxisGrid with non-default axis class
     -> lib/mpl_toolkits/axes_grid1/axes_grid.py
+- xlim_changed not emitted on shared axis
+    -> lib/matplotlib/axis.py

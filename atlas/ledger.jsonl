@@ -14,14 +14,14 @@
 {"iid": "pytest-dev__pytest-7373", "repo": "pytest-dev/pytest", "title": "Incorrect caching of skipif/xfail string condition evaluation", "files": ["src/_pytest/mark/evaluate.py"], "ts": 1784332976}
 {"iid": "matplotlib__matplotlib-24970", "repo": "matplotlib/matplotlib", "title": "[Bug]: NumPy 1.24 deprecation warnings", "files": ["lib/matplotlib/colors.py"], "ts": 1784332976}
 {"iid": "scikit-learn__scikit-learn-13142", "repo": "scikit-learn/scikit-learn", "title": "GaussianMixture predict and fit_predict disagree when n_init>1", "files": ["sklearn/mixture/base.py"], "ts": 1784332976}
-{"iid": "matplotlib__matplotlib-26020", "repo": "matplotlib/matplotlib", "title": "Error creating AxisGrid with non-default axis class", "files": ["lib/mpl_toolkits/axes_grid1/axes_grid.py"], "ts": 1784414933}
+{"iid": "matplotlib__matplotlib-26020", "repo": "matplotlib/matplotlib", "title": "Error creating AxisGrid with non-default axis class", "files": ["lib/mpl_toolkits/axes_grid1/axes_grid.py"], "ts": 1785616120}
 {"iid": "psf__requests-2317", "repo": "psf/requests", "title": "method = builtin_str(method) problem", "files": ["requests/models.py", "requests/sessions.py"], "ts": 1784332976}
 {"iid": "sphinx-doc__sphinx-8595", "repo": "sphinx-doc/sphinx", "title": "autodoc: empty __all__ attribute is ignored", "files": ["setup.py", "sphinx/ext/autodoc/__init__.py", "tox.ini"], "ts": 1784332976}
 {"iid": "matplotlib__matplotlib-23314", "repo": "matplotlib/matplotlib", "title": "[Bug]: set_visible() not working for 3d projection ", "files": ["lib/matplotlib/axes/_base.py", "lib/matplotlib/figure.py", "lib/mpl_toolkits/mplot3d/axes3d.py"], "ts": 1784332976}
 {"iid": "sympy__sympy-23117", "repo": "sympy/sympy", "title": "sympy.Array([]) fails, while sympy.Matrix([]) works", "files": ["sympy/tensor/array/ndim_array.py"], "ts": 1784332976}
 {"iid": "sympy__sympy-22714", "repo": "sympy/sympy", "title": "simpify gives `Imaginary coordinates are not permitted.` with evaluate(False)", "files": ["sympy/geometry/point.py"], "ts": 1784332976}
 {"iid": "pytest-dev__pytest-7432", "repo": "pytest-dev/pytest", "title": "skipping: --runxfail breaks pytest.mark.skip location reporting", "files": ["src/_pytest/skipping.py"], "ts": 1784332976}
-{"iid": "pylint-dev__pylint-7993", "repo": "pylint-dev/pylint", "title": "Using custom braces in message template does not work", "files": ["pylint/reporters/text.py"], "ts": 1784559164}
+{"iid": "pylint-dev__pylint-7993", "repo": "pylint-dev/pylint", "title": "Using custom braces in message template does not work", "files": ["pylint/lint/run.py", "pylint/reporters/text.py"], "ts": 1785629921}
 {"iid": "scikit-learn__scikit-learn-13439", "repo": "scikit-learn/scikit-learn", "title": "Pipeline should implement __len__", "files": ["sklearn/pipeline.py"], "ts": 1784332976}
 {"iid": "sphinx-doc__sphinx-8713", "repo": "sphinx-doc/sphinx", "title": "napoleon_use_param should also affect \"other parameters\" section", "files": ["sphinx/ext/napoleon/docstring.py"], "ts": 1784332976}
 {"iid": "sympy__sympy-24152", "repo": "sympy/sympy", "title": "Bug in expand of TensorProduct + Workaround + Fix", "files": ["sympy/physics/quantum/tensorproduct.py"], "ts": 1784332976}
@@ -32,7 +32,7 @@
 {"iid": "sympy__sympy-21847", "repo": "sympy/sympy", "title": "itermonomials returns incorrect monomials when using min_degrees argument", "files": ["sympy/polys/monomials.py"], "ts": 1784332976}
 {"iid": "django__django-15790", "repo": "django/django", "title": "check_for_template_tags_with_the_same_name with libraries in TEMPLATES", "files": ["django/core/checks/templates.py"], "ts": 1785362643}
 {"iid": "django__django-16041", "repo": "django/django", "title": "Rendering empty_form crashes when empty_permitted is passed to form_kwargs", "files": ["django/forms/formsets.py"], "ts": 1785377693}
-{"iid": "mwaskom__seaborn-3407", "repo": "mwaskom/seaborn", "title": "pairplot raises KeyError with MultiIndex DataFrame", "files": ["seaborn/axisgrid.py"], "ts": 1784417923}
+{"iid": "mwaskom__seaborn-3407", "repo": "mwaskom/seaborn", "title": "pairplot raises KeyError with MultiIndex DataFrame", "files": ["seaborn/axisgrid.py"], "ts": 1785616397}
 {"iid": "scikit-learn__scikit-learn-13241", "repo": "scikit-learn/scikit-learn", "title": "Differences among the results of KernelPCA with rbf kernel", "files": ["sklearn/decomposition/kernel_pca.py"], "ts": 1784332976}
 {"iid": "pylint-dev__pylint-7114", "repo": "pylint-dev/pylint", "title": "Linting fails if module contains module of the same name", "files": ["pylint/lint/expand_modules.py"], "ts": 1784332976}
 {"iid": "django__django-16046", "repo": "django/django", "title": "Fix numberformat.py \"string index out of range\" when null", "files": ["django/utils/numberformat.py"], "ts": 1785454302}
@@ -47,26 +47,26 @@
 {"iid": "astropy__astropy-14995", "repo": "astropy/astropy", "title": "In v5.3, NDDataRef mask propagation fails when one of the operand does not have a mask", "files": ["astropy/nddata/mixins/ndarithmetic.py", "pyproject.toml"], "ts": 1785285499}
 {"iid": "scikit-learn__scikit-learn-13496", "repo": "scikit-learn/scikit-learn", "title": "Expose warm_start in Isolation forest", "files": ["sklearn/ensemble/iforest.py"], "ts": 1784332976}
 {"iid": "astropy__astropy-12907", "repo": "astropy/astropy", "title": "Modeling's `separability_matrix` does not compute separability correctly for nested CompoundModels", "files": ["astropy/modeling/separable.py", "pyproject.toml"], "ts": 1785285194}
-{"iid": "django__django-17087", "repo": "django/django", "title": "Class methods from nested classes cannot be used as Field.default.", "files": ["django/db/migrations/serializer.py"], "ts": 1784591533}
+{"iid": "django__django-17087", "repo": "django/django", "title": "Class methods from nested classes cannot be used as Field.default.", "files": ["django/db/migrations/serializer.py"], "ts": 1785611153}
 {"iid": "scikit-learn__scikit-learn-15535", "repo": "scikit-learn/scikit-learn", "title": "regression in input validation of clustering metrics", "files": ["sklearn/metrics/cluster/_supervised.py"], "ts": 1784332976}
 {"iid": "mwaskom__seaborn-2848", "repo": "mwaskom/seaborn", "title": "pairplot fails with hue_order not containing all hue values in seaborn 0.11.1", "files": ["seaborn/_oldcore.py"], "ts": 1784332976}
-{"iid": "django__django-15498", "repo": "django/django", "title": "Fix handling empty string for If-Modified-Since header", "files": ["django/views/static.py"], "ts": 1785287352}
+{"iid": "django__django-15498", "repo": "django/django", "title": "Fix handling empty string for If-Modified-Since header", "files": ["django/views/static.py"], "ts": 1785577396}
 {"iid": "scikit-learn__scikit-learn-11281", "repo": "scikit-learn/scikit-learn", "title": "Should mixture models have a clusterer-compatible interface", "files": ["doc/tutorial/text_analytics/skeletons/exercise_01_language_train_model.py", "doc/tutorial/text_analytics/skeletons/exercise_02_sentiment.py", "sklearn/mixture/base.py", "sklearn/mixture/gaussian_mixture.py"], "ts": 1784332976}
 {"iid": "sympy__sympy-24066", "repo": "sympy/sympy", "title": "SI._collect_factor_and_dimension() cannot properly detect that exponent is dimensionless", "files": ["sympy/physics/units/unitsystem.py"], "ts": 1784332976}
 {"iid": "pydata__xarray-4094", "repo": "pydata/xarray", "title": "to_unstacked_dataset broken for single-dim variables", "files": ["xarray/core/dataarray.py"], "ts": 1784332976}
-{"iid": "pytest-dev__pytest-11148", "repo": "pytest-dev/pytest", "title": "Module imported twice under import-mode=importlib", "files": ["src/_pytest/pathlib.py"], "ts": 1784560975}
+{"iid": "pytest-dev__pytest-11148", "repo": "pytest-dev/pytest", "title": "Module imported twice under import-mode=importlib", "files": ["src/_pytest/pathlib.py"], "ts": 1785631599}
 {"iid": "matplotlib__matplotlib-23964", "repo": "matplotlib/matplotlib", "title": "[Bug]: Text label with empty line causes a \"TypeError: cannot unpack non-iterable NoneType object\" i", "files": ["lib/matplotlib/backends/backend_ps.py"], "ts": 1784332976}
 {"iid": "scikit-learn__scikit-learn-13584", "repo": "scikit-learn/scikit-learn", "title": "bug in print_changed_only in new repr: vector values", "files": ["sklearn/utils/_pprint.py"], "ts": 1784332976}
 {"iid": "matplotlib__matplotlib-23913", "repo": "matplotlib/matplotlib", "title": "legend draggable as keyword", "files": ["lib/matplotlib/legend.py"], "ts": 1784332976}
 {"iid": "psf__requests-863", "repo": "psf/requests", "title": "Allow lists in the dict values of the hooks argument", "files": ["requests/models.py"], "ts": 1784332976}
 {"iid": "django__django-15851", "repo": "django/django", "title": "dbshell additional parameters should be passed before dbname on PostgreSQL.", "files": ["django/db/backends/postgresql/client.py"], "ts": 1785364908}
-{"iid": "psf__requests-3362", "repo": "psf/requests", "title": "Uncertain about content/text vs iter_content(decode_unicode=True/False)", "files": ["requests/utils.py"], "ts": 1784553743}
+{"iid": "psf__requests-3362", "repo": "psf/requests", "title": "Uncertain about content/text vs iter_content(decode_unicode=True/False)", "files": ["requests/utils.py"], "ts": 1785623953}
 {"iid": "django__django-16527", "repo": "django/django", "title": "\"show_save_as_new\" in admin can add without this permission", "files": ["django/contrib/admin/templatetags/admin_modify.py"], "ts": 1785456610}
 {"iid": "sympy__sympy-20442", "repo": "sympy/sympy", "title": "convert_to seems to combine orthogonal units", "files": ["sympy/physics/units/util.py"], "ts": 1784332976}
-{"iid": "pydata__xarray-5131", "repo": "pydata/xarray", "title": "Trailing whitespace in DatasetGroupBy text representation", "files": ["xarray/core/groupby.py"], "ts": 1784570275}
+{"iid": "pydata__xarray-5131", "repo": "pydata/xarray", "title": "Trailing whitespace in DatasetGroupBy text representation", "files": ["xarray/core/groupby.py"], "ts": 1785701267}
 {"iid": "django__django-16910", "repo": "django/django", "title": "QuerySet.only() doesn't work with select_related() on a reverse OneToOneField relation.", "files": ["django/db/models/sql/compiler.py"], "ts": 1785522481}
 {"iid": "django__django-16379", "repo": "django/django", "title": "FileBasedCache has_key is susceptible to race conditions", "files": ["django/core/cache/backends/filebased.py"], "ts": 1785539735}
-{"iid": "matplotlib__matplotlib-26011", "repo": "matplotlib/matplotlib", "title": "xlim_changed not emitted on shared axis", "files": ["lib/matplotlib/axis.py"], "ts": 1784332976}
+{"iid": "matplotlib__matplotlib-26011", "repo": "matplotlib/matplotlib", "title": "xlim_changed not emitted on shared axis", "files": ["lib/matplotlib/axis.py"], "ts": 1785648748}
 {"iid": "sympy__sympy-22840", "repo": "sympy/sympy", "title": "cse() has strange behaviour for MatrixSymbol indexing", "files": ["sympy/simplify/cse_main.py"], "ts": 1784332976}
 {"iid": "sympy__sympy-20154", "repo": "sympy/sympy", "title": "partitions() reusing the output dictionaries", "files": ["sympy/utilities/iterables.py"], "ts": 1784349213}
 {"iid": "scikit-learn__scikit-learn-14092", "repo": "scikit-learn/scikit-learn", "title": "NCA fails in GridSearch due to too strict parameter checks", "files": ["sklearn/utils/validation.py"], "ts": 1784332976}
@@ -75,11 +75,11 @@
 {"iid": "pytest-dev__pytest-7490", "repo": "pytest-dev/pytest", "title": "Pytest 6: Dynamically adding xfail marker in test no longer ignores failure", "files": ["src/_pytest/nodes.py", "src/_pytest/skipping.py"], "ts": 1784332976}
 {"iid": "pytest-dev__pytest-5227", "repo": "pytest-dev/pytest", "title": "Improve default logging format", "files": ["src/_pytest/logging.py"], "ts": 1784332976}
 {"iid": "pylint-dev__pylint-5859", "repo": "pylint-dev/pylint", "title": "\"--notes\" option ignores note tags that are entirely punctuation", "files": ["pylint/checkers/misc.py", "pylint/lint/run.py"], "ts": 1784332976}
-{"iid": "sphinx-doc__sphinx-11445", "repo": "sphinx-doc/sphinx", "title": "Using rst_prolog removes top level headings containing a domain directive", "files": ["sphinx/util/rst.py", "tox.ini"], "ts": 1784402617}
-{"iid": "django__django-16255", "repo": "django/django", "title": "Sitemaps without items raise ValueError on callable lastmod.", "files": ["django/contrib/sitemaps/__init__.py"], "ts": 1785455390}
+{"iid": "sphinx-doc__sphinx-11445", "repo": "sphinx-doc/sphinx", "title": "Using rst_prolog removes top level headings containing a domain directive", "files": ["sphinx/util/rst.py", "tox.ini"], "ts": 1785638684}
+{"iid": "django__django-16255", "repo": "django/django", "title": "Sitemaps without items raise ValueError on callable lastmod.", "files": ["django/contrib/sitemaps/__init__.py"], "ts": 1785576987}
 {"iid": "matplotlib__matplotlib-24149", "repo": "matplotlib/matplotlib", "title": "[Bug]: ax.bar raises for all-nan data on matplotlib 3.6.1 ", "files": ["lib/matplotlib/cbook/__init__.py"], "ts": 1784332976}
 {"iid": "django__django-16873", "repo": "django/django", "title": "Template filter `join` should not escape the joining string if `autoescape` is `off`", "files": ["django/template/defaultfilters.py"], "ts": 1785510250}
-{"iid": "pytest-dev__pytest-11143", "repo": "pytest-dev/pytest", "title": "Rewrite fails when first expression of file is a number and mistaken as docstring ", "files": ["src/_pytest/assertion/rewrite.py"], "ts": 1784332976}
+{"iid": "pytest-dev__pytest-11143", "repo": "pytest-dev/pytest", "title": "Rewrite fails when first expression of file is a number and mistaken as docstring ", "files": ["src/_pytest/assertion/rewrite.py"], "ts": 1785674422}
 {"iid": "scikit-learn__scikit-learn-13779", "repo": "scikit-learn/scikit-learn", "title": "Voting estimator will fail at fit if weights are passed and an estimator is None", "files": ["sklearn/ensemble/voting.py"], "ts": 1784332976}
 {"iid": "scikit-learn__scikit-learn-12471", "repo": "scikit-learn/scikit-learn", "title": "OneHotEncoder ignore unknown error when categories are strings ", "files": ["sklearn/preprocessing/_encoders.py"], "ts": 1784332976}
 {"iid": "sympy__sympy-18532", "repo": "sympy/sympy", "title": "expr.atoms() should return objects with no args instead of subclasses of Atom", "files": ["sympy/core/basic.py"], "ts": 1784351144}
@@ -87,7 +87,7 @@
 {"iid": "django__django-15061", "repo": "django/django", "title": "Remove \"for = ...\" from MultiWidget's <label>.", "files": ["django/forms/widgets.py"], "ts": 1785140846}
 {"iid": "django__django-14999", "repo": "django/django", "title": "RenameModel with db_table should be a noop.", "files": ["django/db/migrations/operations/models.py"], "ts": 1784371345}
 {"iid": "sympy__sympy-18057", "repo": "sympy/sympy", "title": "Sympy incorrectly attempts to eval reprs in its __eq__ method", "files": ["sympy/core/expr.py"], "ts": 1784375265}
-{"iid": "django__django-17051", "repo": "django/django", "title": "Allow returning IDs in QuerySet.bulk_create() when updating conflicts.", "files": ["django/db/models/query.py", "django/db/models/sql/compiler.py"], "ts": 1784565464}
+{"iid": "django__django-17051", "repo": "django/django", "title": "Allow returning IDs in QuerySet.bulk_create() when updating conflicts.", "files": ["django/db/models/query.py"], "ts": 1785646898}
 {"iid": "mwaskom__seaborn-3190", "repo": "mwaskom/seaborn", "title": "Color mapping fails with boolean data", "files": ["seaborn/_core/scales.py"], "ts": 1784561407}
 {"iid": "sympy__sympy-21171", "repo": "sympy/sympy", "title": "_print_SingularityFunction() got an unexpected keyword argument 'exp'", "files": ["sympy/printing/latex.py"], "ts": 1784642085}
 {"iid": "sympy__sympy-19487", "repo": "sympy/sympy", "title": "Rewrite sign as abs", "files": ["sympy/functions/elementary/complexes.py"], "ts": 1784787259}
@@ -96,3 +96,51 @@
 {"iid": "django__django-11099", "repo": "django/django", "title": "UsernameValidator allows trailing newline in usernames", "files": ["django/contrib/auth/validators.py"], "ts": 1785179029}
 {"iid": "django__django-12497", "repo": "django/django", "title": "Wrong hint about recursive relationship.", "files": ["django/db/models/fields/related.py"], "ts": 1785237609}
 {"iid": "django__django-13230", "repo": "django/django", "title": "Add support for item_comments to syndication framework", "files": ["django/contrib/syndication/views.py"], "ts": 1785239133}
+{"iid": "django__django-10914", "repo": "django/django", "title": "Set default FILE_UPLOAD_PERMISSION to 0o644.", "files": ["django/conf/global_settings.py"], "ts": 1785743091}
+{"iid": "django__django-11039", "repo": "django/django", "title": "sqlmigrate wraps it's outpout in BEGIN/COMMIT even if the database doesn't support transactional DDL", "files": ["django/core/management/commands/sqlmigrate.py"], "ts": 1785751316}
+{"iid": "django__django-11049", "repo": "django/django", "title": "Correct expected format in invalid DurationField error message", "files": ["django/db/models/fields/__init__.py"], "ts": 1785752416}
+{"iid": "django__django-11133", "repo": "django/django", "title": "HttpResponse doesn't handle memoryview objects", "files": ["django/http/response.py"], "ts": 1785753284}
+{"iid": "django__django-11179", "repo": "django/django", "title": "delete() on instances of models without any dependencies doesn't clear PKs.", "files": ["django/db/models/deletion.py"], "ts": 1785756028}
+{"iid": "django__django-11583", "repo": "django/django", "title": "Auto-reloading with StatReloader very intermittently throws \"ValueError: embedded null byte\".", "files": ["django/utils/autoreload.py"], "ts": 1785758325}
+{"iid": "django__django-11815", "repo": "django/django", "title": "Migrations uses value of enum object instead of its name.", "files": ["django/db/migrations/serializer.py"], "ts": 1785779613}
+{"iid": "django__django-11999", "repo": "django/django", "title": "Cannot override get_FOO_display() in Django 2.2+.", "files": ["django/db/models/fields/__init__.py"], "ts": 1785806582}
+{"iid": "django__django-12125", "repo": "django/django", "title": "makemigrations produces incorrect path for inner classes", "files": ["django/db/migrations/serializer.py"], "ts": 1785815722}
+{"iid": "django__django-12184", "repo": "django/django", "title": "Optional URL params crash some view functions.", "files": ["django/urls/resolvers.py"], "ts": 1785816350}
+{"iid": "django__django-12284", "repo": "django/django", "title": "Model.get_FOO_display() does not work correctly with inherited choices.", "files": ["django/db/models/base.py"], "ts": 1785816975}
+{"iid": "django__django-12286", "repo": "django/django", "title": "translation.E004 shouldn't be raised on sublanguages when a base language is available.", "files": ["django/core/checks/translation.py"], "ts": 1785820868}
+{"iid": "django__django-12700", "repo": "django/django", "title": "Settings are cleaned insufficiently.", "files": ["django/views/debug.py"], "ts": 1785837241}
+{"iid": "django__django-12708", "repo": "django/django", "title": "Migration crashes deleting an index_together if there is a unique_together on the same fields", "files": ["django/db/backends/base/schema.py"], "ts": 1785838697}
+{"iid": "django__django-12747", "repo": "django/django", "title": "QuerySet.Delete - inconsistent result when zero objects deleted", "files": ["django/db/models/deletion.py"], "ts": 1785844518}
+{"iid": "django__django-12915", "repo": "django/django", "title": "Add get_response_async for ASGIStaticFilesHandler", "files": ["django/contrib/staticfiles/handlers.py"], "ts": 1785857848}
+{"iid": "django__django-12983", "repo": "django/django", "title": "Make django.utils.text.slugify() strip dashes and underscores", "files": ["django/utils/text.py"], "ts": 1785858699}
+{"iid": "django__django-13028", "repo": "django/django", "title": "Queryset raises NotSupportedError when RHS has filterable=False attribute.", "files": ["django/db/models/sql/query.py"], "ts": 1785859152}
+{"iid": "django__django-13033", "repo": "django/django", "title": "Self referencing foreign key doesn't correctly order by a relation \"_id\" field.", "files": ["django/db/models/sql/compiler.py"], "ts": 1785860051}
+{"iid": "django__django-13158", "repo": "django/django", "title": "QuerySet.none() on combined queries returns all results.", "files": ["django/db/models/sql/query.py"], "ts": 1785860736}
+{"iid": "django__django-13315", "repo": "django/django", "title": "limit_choices_to on a ForeignKey can render duplicate options in formfield", "files": ["django/forms/models.py"], "ts": 1785869484}
+{"iid": "django__django-13447", "repo": "django/django", "title": "Added model class to app_list context", "files": ["django/contrib/admin/sites.py"], "ts": 1785880915}
+{"iid": "django__django-13658", "repo": "django/django", "title": "ManagementUtility instantiates CommandParser without passing already-computed prog argument", "files": ["django/core/management/__init__.py"], "ts": 1785893142}
+{"iid": "django__django-13660", "repo": "django/django", "title": "shell command crashes when passing (with -c) the python code with functions.", "files": ["django/core/management/commands/shell.py"], "ts": 1785896007}
+{"iid": "django__django-13710", "repo": "django/django", "title": "Use Admin Inline verbose_name as default for Inline verbose_name_plural", "files": ["django/contrib/admin/options.py"], "ts": 1785900293}
+{"iid": "django__django-13757", "repo": "django/django", "title": "Using __isnull=True on a KeyTransform should not match JSON null on SQLite and Oracle", "files": ["django/db/models/fields/json.py"], "ts": 1785901009}
+{"iid": "django__django-13925", "repo": "django/django", "title": "models.W042 is raised on inherited manually specified primary key.", "files": ["django/db/models/base.py"], "ts": 1785908822}
+{"iid": "django__django-13933", "repo": "django/django", "title": "ModelChoiceField does not provide value of invalid choice when raising ValidationError", "files": ["django/forms/models.py"], "ts": 1785911755}
+{"iid": "django__django-13964", "repo": "django/django", "title": "Saving parent object after setting on child leads to data loss for parents with non-numeric primary ", "files": ["django/db/models/base.py"], "ts": 1785913550}
+{"iid": "django__django-14016", "repo": "django/django", "title": "\"TypeError: cannot pickle\" when applying | operator to a Q object", "files": ["django/utils/tree.py"], "ts": 1785914376}
+{"iid": "django__django-14017", "repo": "django/django", "title": "Q(...) & Exists(...) raises a TypeError", "files": ["django/db/models/query_utils.py"], "ts": 1785919158}
+{"iid": "django__django-14238", "repo": "django/django", "title": "DEFAULT_AUTO_FIELD subclass check fails for subclasses of BigAutoField and SmallAutoField.", "files": ["django/db/models/fields/__init__.py"], "ts": 1785925415}
+{"iid": "django__django-14382", "repo": "django/django", "title": "django-admin startapp with trailing slash in directory name results in error", "files": ["django/core/management/templates.py"], "ts": 1785928886}
+{"iid": "django__django-14411", "repo": "django/django", "title": "Label for ReadOnlyPasswordHashWidget points to non-labelable element.", "files": ["django/contrib/auth/forms.py"], "ts": 1785931477}
+{"iid": "django__django-14608", "repo": "django/django", "title": "Add `nonform` CSS class for non form errors in FormSets", "files": ["django/forms/formsets.py"], "ts": 1785942178}
+{"iid": "django__django-14672", "repo": "django/django", "title": "Missing call `make_hashable` on `through_fields` in `ManyToManyRel`", "files": ["django/db/models/fields/reverse_related.py"], "ts": 1785948035}
+{"iid": "django__django-14752", "repo": "django/django", "title": "Refactor AutocompleteJsonView to support extra fields in autocomplete response", "files": ["django/contrib/admin/views/autocomplete.py"], "ts": 1785955756}
+{"iid": "django__django-14787", "repo": "django/django", "title": "method_decorator() should preserve wrapper assignments", "files": ["django/utils/decorators.py"], "ts": 1785956266}
+{"iid": "django__django-14855", "repo": "django/django", "title": "Wrong URL generated by get_admin_url for readonly field in custom Admin Site", "files": ["django/contrib/admin/helpers.py"], "ts": 1785959007}
+{"iid": "django__django-14915", "repo": "django/django", "title": "ModelChoiceIteratorValue is not hashable.", "files": ["django/forms/models.py"], "ts": 1785961615}
+{"iid": "django__django-11001", "repo": "django/django", "title": "Incorrect removal of order_by clause created as multiline RawSQL", "files": ["django/db/models/sql/compiler.py"], "ts": 1785974610}
+{"iid": "django__django-11620", "repo": "django/django", "title": "When DEBUG is True, raising Http404 in a path converter's to_python method does not result in a tech", "files": ["django/urls/resolvers.py", "django/views/debug.py"], "ts": 1785977297}
+{"iid": "django__django-11905", "repo": "django/django", "title": "Prevent using __isnull lookup with non-boolean value.", "files": ["django/db/models/lookups.py"], "ts": 1785993351}
+{"iid": "django__django-11848", "repo": "django/django", "title": "django.utils.http.parse_http_date two digit year check is incorrect", "files": ["django/utils/http.py"], "ts": 1786024240}
+{"iid": "django__django-12308", "repo": "django/django", "title": "JSONField are not properly displayed in admin when they are readonly.", "files": ["django/contrib/admin/utils.py"], "ts": 1786041624}
+{"iid": "django__django-12453", "repo": "django/django", "title": "`TransactionTestCase.serialized_rollback` fails to restore objects due to ordering constraints", "files": ["django/db/backends/base/creation.py"], "ts": 1786044633}
+{"iid": "django__django-12470", "repo": "django/django", "title": "Inherited model doesn't correctly order by \"-pk\" when specified on Parent.Meta.ordering", "files": ["django/db/models/sql/compiler.py"], "ts": 1786048458}
+{"iid": "django__django-12856", "repo": "django/django", "title": "Add check for fields of UniqueConstraints.", "files": ["django/db/models/base.py"], "ts": 1786049483}
