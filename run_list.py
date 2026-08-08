@@ -251,6 +251,23 @@ for iid in [i for i in ids if i not in done]:
     A.FIX_BUDGET = _base_budget
     chosen = dict(max(attempts, key=form_rank))
     chosen["attempts_made"] = len(attempts)
+    # RANK TELEMETRY (2026-08-08). The two-metric design below deliberately
+    # lets a BANK_AUDIT win lose to a higher-self-belief miss. That is the
+    # intended behaviour, but until now the LOSING attempt's evidence was
+    # thrown away, so auditing a gap meant re-reading the run log. Record the
+    # whole ranking, so every gap is diagnosable from the results file alone.
+    # TELEMETRY ONLY -- this does not change selection.
+    chosen["attempt_ranks"] = [
+        {"attempt": _i + 1,
+         "rank": round(form_rank(_a), 3),
+         "resolved": bool(_a.get("resolved")),
+         "given_tests_ok": _a.get("given_tests_ok"),
+         "syntax_ok": _a.get("syntax_ok"),
+         "patch_bytes": _a.get("patch_bytes"),
+         "repro_green": bool(_a.get("repro_green")),
+         "probe_green": bool(_a.get("probe_green")),
+         "fix_verified_by_model": bool(_a.get("fix_verified_by_model"))}
+        for _i, _a in enumerate(attempts)]
     chosen["model"] = MODEL_TAG
     # TWO METRICS, RECORDED SEPARATELY, NEVER MIXED.
     #
@@ -275,8 +292,13 @@ for iid in [i for i in ids if i not in done]:
     n_any = sum(1 for x in results if x.get("any_attempt_resolved"))
     _flag = ""
     if chosen.get("any_attempt_resolved") and not chosen.get("resolved"):
-        _flag = ("   [!] attempt %s RESOLVED but form_rank submitted another"
-                 % chosen.get("resolved_attempt"))
+        _won = next((x for x in chosen["attempt_ranks"] if x["resolved"]), None)
+        _sub = max(chosen["attempt_ranks"], key=lambda x: x["rank"])
+        _flag = ("   [!] attempt %s RESOLVED (rank %.1f) but form_rank "
+                 "submitted attempt %s (rank %.1f)"
+                 % (chosen.get("resolved_attempt"),
+                    (_won or {}).get("rank", 0.0),
+                    _sub["attempt"], _sub["rank"]))
     print("[%d/%d] %s -> %s   (submitted %d/%d | any-attempt %d/%d)%s"
           % (len(results), len(ids), iid,
              "RESOLVED" if chosen.get("resolved") else "miss",
