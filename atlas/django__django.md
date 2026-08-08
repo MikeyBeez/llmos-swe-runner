@@ -143,3 +143,13 @@ CODE ATLAS for django/django — where past issues were actually fixed
     -> django/db/models/sql/compiler.py
 - Add check for fields of UniqueConstraints.
     -> django/db/models/base.py
+- The value of a TextChoices/IntegerChoices field has a differing type
+    -> django/db/models/enums.py
+- admin_views.test_multidb fails with persistent test SQLite database.
+    -> django/db/backends/sqlite3/base.py
+- Union queryset should raise on distinct().
+    -> django/db/models/query.py
+- Abstract model field should not be equal across models
+    -> django/db/models/fields/__init__.py
+- Missing import statement in generated migration (NameError: name 'models' is not defined)
+    -> django/db/migrations/serializer.py

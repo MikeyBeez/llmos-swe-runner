@@ -144,3 +144,8 @@
 {"iid": "django__django-12453", "repo": "django/django", "title": "`TransactionTestCase.serialized_rollback` fails to restore objects due to ordering constraints", "files": ["django/db/backends/base/creation.py"], "ts": 1786044633}
 {"iid": "django__django-12470", "repo": "django/django", "title": "Inherited model doesn't correctly order by \"-pk\" when specified on Parent.Meta.ordering", "files": ["django/db/models/sql/compiler.py"], "ts": 1786048458}
 {"iid": "django__django-12856", "repo": "django/django", "title": "Add check for fields of UniqueConstraints.", "files": ["django/db/models/base.py"], "ts": 1786049483}
+{"iid": "django__django-11964", "repo": "django/django", "title": "The value of a TextChoices/IntegerChoices field has a differing type", "files": ["django/db/models/enums.py"], "ts": 1786077700}
+{"iid": "django__django-12113", "repo": "django/django", "title": "admin_views.test_multidb fails with persistent test SQLite database.", "files": ["django/db/backends/sqlite3/base.py"], "ts": 1786083562}
+{"iid": "django__django-12908", "repo": "django/django", "title": "Union queryset should raise on distinct().", "files": ["django/db/models/query.py"], "ts": 1786089711}
+{"iid": "django__django-13401", "repo": "django/django", "title": "Abstract model field should not be equal across models", "files": ["django/db/models/fields/__init__.py"], "ts": 1786102885}
+{"iid": "django__django-14580", "repo": "django/django", "title": "Missing import statement in generated migration (NameError: name 'models' is not defined)", "files": ["django/db/migrations/serializer.py"], "ts": 1786132640}

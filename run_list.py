@@ -252,13 +252,35 @@ for iid in [i for i in ids if i not in done]:
     chosen = dict(max(attempts, key=form_rank))
     chosen["attempts_made"] = len(attempts)
     chosen["model"] = MODEL_TAG
+    # TWO METRICS, RECORDED SEPARATELY, NEVER MIXED.
+    #
+    # form_rank must not see the grade: that is what makes `resolved` a
+    # leaderboard-legal pass@1 number, since a real entry submits one patch
+    # without knowing the answer. But form_rank ranks on the model's OWN
+    # confidence, and BANK_AUDIT exists to find wins the model has no
+    # confidence in. Measured 2026-08-07 on django-12908: try 2 resolved via
+    # BANK_AUDIT after the walk hit its wall cap with no green reproduction,
+    # so it scored 0.0 on self-belief; the failed try 1 outranked it and a
+    # real win was written down as a miss.
+    #
+    # Do not "fix" this by letting resolved dominate form_rank -- that makes
+    # the submission oracle-selected. Record both numbers instead.
+    chosen["any_attempt_resolved"] = any(bool(a.get("resolved"))
+                                         for a in attempts)
+    chosen["resolved_attempt"] = next(
+        (i + 1 for i, a in enumerate(attempts) if a.get("resolved")), None)
     results.append(chosen)
     json.dump(results, open(OUT, "w"), indent=2)
     n_res = sum(1 for x in results if x.get("resolved"))
-    print("[%d/%d] %s -> %s   (running: %d/%d resolved)"
+    n_any = sum(1 for x in results if x.get("any_attempt_resolved"))
+    _flag = ""
+    if chosen.get("any_attempt_resolved") and not chosen.get("resolved"):
+        _flag = ("   [!] attempt %s RESOLVED but form_rank submitted another"
+                 % chosen.get("resolved_attempt"))
+    print("[%d/%d] %s -> %s   (submitted %d/%d | any-attempt %d/%d)%s"
           % (len(results), len(ids), iid,
              "RESOLVED" if chosen.get("resolved") else "miss",
-             n_res, len(results)), flush=True)
+             n_res, len(results), n_any, len(results), _flag), flush=True)
 
 n_res = sum(1 for x in results if x.get("resolved"))
 print("DONE: %d/%d still pass under %s" % (n_res, len(results), MODEL_TAG))
