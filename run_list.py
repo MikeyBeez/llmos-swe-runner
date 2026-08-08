@@ -249,7 +249,30 @@ for iid in [i for i in ids if i not in done]:
         if r.get("resolved"):
             break
     A.FIX_BUDGET = _base_budget
-    chosen = dict(max(attempts, key=form_rank))
+    # SELECTION AUTHORITY (2026-08-08, gated, default OFF).
+    # Under ORACLE_GATE the run already spends an oracle bit INSIDE the walk:
+    # BANK_AUDIT probes banked candidates and submits one it KNOWS passes. The
+    # cross-attempt pick then threw that answer away, because form_rank is
+    # deliberately blind to the grade -- so a BANK_AUDIT win, which by
+    # construction carries no self-belief, loses to a confident miss.
+    # Measured over every run log to date: 318 instances, the gap fires twice
+    # (django-12908, sympy-12419) -- 0.6 pts lifetime, but BOTH land after
+    # BANK_AUDIT shipped, where it is 2 of 8 wins discarded.
+    #
+    # RANK_ORACLE=1 makes the oracle the authority END TO END, and only when
+    # ORACLE_GATE=1 is already set -- i.e. only for runs whose number is
+    # ALREADY a research number that may never be compared to pass@1. With
+    # RANK_ORACLE unset (the default) behaviour is bit-identical to before and
+    # `resolved` stays leaderboard-legal. Every record names the policy it was
+    # selected under, so the two can never be silently pooled.
+    _rank_oracle = (os.environ.get("RANK_ORACLE", "0") == "1"
+                    and os.environ.get("ORACLE_GATE", "0") == "1")
+    if _rank_oracle:
+        chosen = dict(max(
+            attempts, key=lambda _a: (bool(_a.get("resolved")), form_rank(_a))))
+    else:
+        chosen = dict(max(attempts, key=form_rank))
+    chosen["selection_policy"] = "oracle" if _rank_oracle else "blind"
     chosen["attempts_made"] = len(attempts)
     # RANK TELEMETRY (2026-08-08). The two-metric design below deliberately
     # lets a BANK_AUDIT win lose to a higher-self-belief miss. That is the
