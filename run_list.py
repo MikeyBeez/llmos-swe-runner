@@ -132,6 +132,18 @@ def wait_net():
 
 for iid in [i for i in ids if i not in done]:
     inst = insts[iid]
+    # WORKSHEET A/B (2026-08-08, gated WORKSHEET_AB, default off). Assign the
+    # arm from sha1(instance_id) so both arms accumulate inside ONE run and a
+    # resume puts an instance back in the same arm it started in.
+    if os.environ.get("WORKSHEET_AB", "0") == "1":
+        import hashlib as _hl
+        _arm = ("evidence"
+                if int(_hl.sha1(iid.encode()).hexdigest()[:8], 16) % 2
+                else "control")
+        os.environ["WORKSHEET_VARIANT"] = _arm
+        print(" -- worksheet arm: %s" % _arm, flush=True)
+    else:
+        os.environ.pop("WORKSHEET_VARIANT", None)
     pin = CANON.get(iid)
     if pin:
         os.environ["PIN_PYTHON"] = pin
