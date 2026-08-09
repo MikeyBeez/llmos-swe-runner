@@ -137,13 +137,28 @@ for iid in [i for i in ids if i not in done]:
     # resume puts an instance back in the same arm it started in.
     if os.environ.get("WORKSHEET_AB", "0") == "1":
         import hashlib as _hl
-        _arm = ("evidence"
+        _arm = ("treat"
                 if int(_hl.sha1(iid.encode()).hexdigest()[:8], 16) % 2
                 else "control")
-        os.environ["WORKSHEET_VARIANT"] = _arm
-        print(" -- worksheet arm: %s" % _arm, flush=True)
+        # The arm switches ONE coherent intervention: the incomplete-fix
+        # treatment. Both halves address the same measured failure -- 58% of
+        # multi-hunk misses are right-place-second-location-never-found -- so
+        # bundling them is one idea, not two confounded ones. The evidence
+        # worksheet line is a DIFFERENT idea and stays off in both arms so it
+        # cannot contaminate this comparison. edit_line, thrash echo and bank
+        # audit are identical in both arms.
+        os.environ.pop("WORKSHEET_VARIANT", None)
+        if _arm == "treat":
+            os.environ["SWEBENCH_MODE"] = "1"
+            os.environ["PROMPT_ROTATE"] = "1"
+        else:
+            os.environ.pop("SWEBENCH_MODE", None)
+            os.environ.pop("PROMPT_ROTATE", None)
+        print(" -- incomplete-fix arm: %s" % _arm, flush=True)
     else:
         os.environ.pop("WORKSHEET_VARIANT", None)
+        os.environ.pop("SWEBENCH_MODE", None)
+        os.environ.pop("PROMPT_ROTATE", None)
     pin = CANON.get(iid)
     if pin:
         os.environ["PIN_PYTHON"] = pin
