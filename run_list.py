@@ -257,15 +257,35 @@ for iid in [i for i in ids if i not in done]:
         # the regression leg failed. A patch nobody believed just failed.
         _believed = bool(r.get("repro_green")) or "F2P passed" in (r.get("score_tail") or "")
         if not r.get("resolved") and _believed and os.environ.get("CONTAINER_APPEAL", "0") == "1":
+            # 2026-08-09: referee.py assumed pytest and broke on every sympy
+            # image (their testbeds grade via bin/test).  judge_one.py shells
+            # out to the OFFICIAL harness, which knows each repo dialect.
+            # Validated same day: 18/18 fresh32 misses and 14/14 wins agreed
+            # with the in-env judge, and judge_one returned UNRESOLVED on a
+            # container-confirmed miss (13773).
             try:
-                _rc = subprocess.run(
-                    ["python3", "referee.py", iid],
-                    cwd=SWE, capture_output=True, text=True, timeout=2400)
-                _out = (_rc.stdout or "") + (_rc.stderr or "")
-                _tag = "attempt%d" % (k + 1)
-                _line = next((l for l in _out.splitlines()
-                              if _tag in l and ("PASS" in l or "RESOLVED" in l)), "")
-                print(" -- container appeal: %s" % (_line or _out.strip().splitlines()[-1][:120] if _out.strip() else "no output"), flush=True)
+                _pp = os.path.join(SWE, "traces_v2", iid + ".patch")
+                if not os.path.exists(_pp):
+                    import glob as _gl
+                    _cand = sorted(_gl.glob(os.path.join(
+                        SWE, "runs", "ornith", "patches",
+                        iid + ".attempt*.patch")))
+                    _pp = _cand[-1] if _cand else None
+                _line = ""
+                if _pp:
+                    _rc = subprocess.run(
+                        ["python3", "judge_one.py", iid, _pp],
+                        cwd=SWE, capture_output=True, text=True, timeout=3400)
+                    _out = (_rc.stdout or "") + (_rc.stderr or "")
+                    _line = next((l for l in _out.splitlines()
+                                  if l.startswith("VERDICT: RESOLVED")), "")
+                    print(" -- container appeal: %s" % next(
+                        (l for l in _out.splitlines()
+                         if l.startswith("VERDICT:")), "no verdict"),
+                        flush=True)
+                else:
+                    print(" -- container appeal: no patch file to judge",
+                          flush=True)
                 if _line:
                     r["resolved"] = True
                     r["resolved_by"] = "container"
