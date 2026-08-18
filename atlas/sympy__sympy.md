@@ -1,41 +1,81 @@
 CODE ATLAS for sympy/sympy — where past issues were actually fixed
 (from this system's own resolved runs; treat as evidence, verify by reading — past fixes suggest, they do not decide)
 
-- sqf and sqf_list output is not consistant
-    -> sympy/polys/polytools.py
-- Python code printer not respecting tuple with one element
-    -> sympy/utilities/lambdify.py
-- sympy.Array([]) fails, while sympy.Matrix([]) works
-    -> sympy/tensor/array/ndim_array.py
-- simpify gives `Imaginary coordinates are not permitted.` with evaluate(False)
-    -> sympy/geometry/point.py
-- Bug in expand of TensorProduct + Workaround + Fix
-    -> sympy/physics/quantum/tensorproduct.py
 - `refine()` does not understand how to simplify complex arguments
     -> sympy/functions/elementary/complexes.py
-- itermonomials returns incorrect monomials when using min_degrees argument
-    -> sympy/polys/monomials.py
-- 0**-oo produces 0, the documentation says it should produce zoo
-    -> sympy/core/numbers.py
-- Wrong Derivative kind attribute
-    -> sympy/core/function.py
-- SI._collect_factor_and_dimension() cannot properly detect that exponent is dimensionless
-    -> sympy/physics/units/unitsystem.py
-- convert_to seems to combine orthogonal units
-    -> sympy/physics/units/util.py
-- cse() has strange behaviour for MatrixSymbol indexing
-    -> sympy/simplify/cse_main.py
-- collect_factor_and_dimension does not detect equivalent dimensions in addition
-    -> sympy/physics/units/unitsystem.py
-- partitions() reusing the output dictionaries
-    -> sympy/utilities/iterables.py
-- expr.atoms() should return objects with no args instead of subclasses of Atom
-    -> sympy/core/basic.py
-- diophantine: incomplete results depending on syms order with permute=True
-    -> sympy/solvers/diophantine.py
-- Sympy incorrectly attempts to eval reprs in its __eq__ method
-    -> sympy/core/expr.py
 - _print_SingularityFunction() got an unexpected keyword argument 'exp'
     -> sympy/printing/latex.py
 - Rewrite sign as abs
     -> sympy/functions/elementary/complexes.py
+- Sum of the elements of an identity matrix is zero
+    -> sympy/matrices/expressions/matexpr.py
+- `Permutation` constructor fails with non-disjoint cycles
+    -> sympy/combinatorics/permutations.py
+- Behavior of Matrix hstack and vstack changed in sympy 1.1
+    -> sympy/matrices/sparse.py
+- Unexpected exception when multiplying geometry.Point and number
+    -> sympy/core/numbers.py, sympy/geometry/point.py
+- simplify(cos(x)**I): Invalid comparison of complex I (fu.py)
+    -> sympy/simplify/fu.py
+- Lambdify misinterprets some matrix expressions
+    -> sympy/printing/pycode.py
+- Intersection should remove duplicates
+    -> sympy/sets/sets.py
+- autowrap with cython backend fails when array arguments do not appear in wrapped expr
+    -> sympy/utilities/codegen.py
+- Some issues with idiff
+    -> sympy/geometry/util.py
+- mathematica_code gives wrong output with Max
+    -> sympy/printing/codeprinter.py
+- lambdify does not work with certain MatrixSymbol names even with dummify=True
+    -> sympy/utilities/lambdify.py
+- Error pretty printing MatAdd
+    -> sympy/printing/pretty/pretty.py
+- Latex printer does not support full inverse trig function names for acsc and asec
+    -> sympy/printing/latex.py
+- Poly(domain='RR[y,z]') doesn't work
+    -> sympy/polys/polyoptions.py
+- Matrix.col_insert() no longer seems to work correctly.
+    -> sympy/matrices/common.py
+- .subs on coth(log(tan(x))) errors for certain integral values
+    -> sympy/functions/elementary/hyperbolic.py
+- Python 2->3 pickle fails with float-containing expressions
+    -> sympy/core/numbers.py
+- Sympy incorrectly attempts to eval reprs in its __eq__ method
+    -> sympy/core/expr.py
+- diophantine: incomplete results depending on syms order with permute=True
+    -> sympy/solvers/diophantine.py
+- expr.atoms() should return objects with no args instead of subclasses of Atom
+    -> sympy/core/basic.py
+- BlockDiagMatrix with one element cannot be converted to regular Matrix
+    -> sympy/matrices/expressions/blockmatrix.py
+- sqf and sqf_list output is not consistant
+    -> sympy/polys/polytools.py
+- Wrong matrix element fetched from BlockMatrix
+    -> sympy/matrices/expressions/blockmatrix.py
+- partitions() reusing the output dictionaries
+    -> sympy/utilities/iterables.py
+- 0**-oo produces 0, the documentation says it should produce zoo
+    -> sympy/core/numbers.py
+- convert_to seems to combine orthogonal units
+    -> sympy/physics/units/util.py
+- Symbol instances have __dict__ since 1.7?
+    -> sympy/core/_print_helpers.py
+- Wrong Derivative kind attribute
+    -> sympy/core/function.py
+- itermonomials returns incorrect monomials when using min_degrees argument
+    -> sympy/polys/monomials.py
+- simpify gives `Imaginary coordinates are not permitted.` with evaluate(False)
+    -> sympy/geometry/point.py
+- cse() has strange behaviour for MatrixSymbol indexing
+    -> sympy/simplify/cse_main.py
+- sympy.Array([]) fails, while sympy.Matrix([]) works
+    -> sympy/tensor/array/ndim_array.py
+- Python code printer not respecting tuple with one element
+    -> sympy/utilities/lambdify.py
+- SI._collect_factor_and_dimension() cannot properly detect that exponent is dimensionless
+    -> sympy/physics/units/unitsystem.py
+- Bug in expand of TensorProduct + Workaround + Fix
+    -> sympy/physics/quantum/tensorproduct.py
+- collect_factor_and_dimension does not detect equivalent dimensions in addition
+    -> sympy/physics/units/unitsystem.py

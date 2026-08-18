@@ -1,8 +1,6 @@
 CODE ATLAS for django/django — where past issues were actually fixed
 (from this system's own resolved runs; treat as evidence, verify by reading — past fixes suggest, they do not decide)
 
-- RenameModel with db_table should be a noop.
-    -> django/db/migrations/operations/models.py
 - Remove "for = ..." from MultiWidget's <label>.
     -> django/forms/widgets.py
 - Allow FilePathField path to accept a callable.
@@ -153,3 +151,9 @@ CODE ATLAS for django/django — where past issues were actually fixed
     -> django/db/models/fields/__init__.py
 - Missing import statement in generated migration (NameError: name 'models' is not defined)
     -> django/db/migrations/serializer.py
+- RenameModel with db_table should be a noop.
+    -> django/db/migrations/operations/models.py
+- ExpressionWrapper for ~Q(pk__in=[]) crashes.
+    -> django/db/models/expressions.py
+- ModelForm fields with callable defaults don't correctly propagate default values
+    -> django/forms/boundfield.py

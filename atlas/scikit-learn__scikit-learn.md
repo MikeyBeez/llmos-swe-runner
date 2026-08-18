@@ -1,10 +1,12 @@
 CODE ATLAS for scikit-learn/scikit-learn — where past issues were actually fixed
-(from this system's own resolved runs; use to locate, then verify by reading)
+(from this system's own resolved runs; treat as evidence, verify by reading — past fixes suggest, they do not decide)
 
+- RepeatedKFold and RepeatedStratifiedKFold do not show correct __repr__ string
+    -> sklearn/model_selection/_split.py
 - linear_model.RidgeClassifierCV's Parameter store_cv_values issue
-    -> doc/tutorial/text_analytics/skeletons/exercise_01_language_train_model.py, doc/tutorial/text_analytics/skeletons/exercise_02_sentiment.py, sklearn/linear_model/ridge.py
+    -> sklearn/linear_model/ridge.py
 - Should mixture models have a clusterer-compatible interface
-    -> doc/tutorial/text_analytics/skeletons/exercise_01_language_train_model.py, doc/tutorial/text_analytics/skeletons/exercise_02_sentiment.py, sklearn/mixture/base.py, sklearn/mixture/gaussian_mixture.py
+    -> sklearn/mixture/base.py, sklearn/mixture/gaussian_mixture.py
 - OneHotEncoder ignore unknown error when categories are strings 
     -> sklearn/preprocessing/_encoders.py
 - GaussianMixture predict and fit_predict disagree when n_init>1
@@ -19,15 +21,13 @@ CODE ATLAS for scikit-learn/scikit-learn — where past issues were actually fix
     -> sklearn/utils/_pprint.py
 - Voting estimator will fail at fit if weights are passed and an estimator is None
     -> sklearn/ensemble/voting.py
-- NCA fails in GridSearch due to too strict parameter checks
-    -> sklearn/utils/validation.py
 - ZeroDivisionError in _sparse_fit for SVM with empty support_vectors_
     -> sklearn/svm/base.py
-- RepeatedKFold and RepeatedStratifiedKFold do not show correct __repr__ string
-    -> sklearn/model_selection/_split.py
 - Return values of non converged affinity propagation clustering
     -> sklearn/cluster/_affinity_propagation.py
 - regression in input validation of clustering metrics
     -> sklearn/metrics/cluster/_supervised.py
 - ColumnTransformer with pandas output can't handle transformers with no features
     -> sklearn/compose/_column_transformer.py
+- NCA fails in GridSearch due to too strict parameter checks
+    -> sklearn/neighbors/nca.py
